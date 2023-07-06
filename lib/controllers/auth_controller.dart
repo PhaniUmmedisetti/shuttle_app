@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shuttle/models/event.dart';
 import 'package:shuttle/views/login_page.dart';
-import 'package:shuttle/views/welcome_page.dart';
 
 import '../views/home_screen.dart';
 
@@ -36,7 +35,7 @@ class AuthController extends GetxController {
       print("login page");
       Get.offAll(() => const LoginScreen());
     } else {
-      Get.offAll(() => const HomeScreen());
+      Get.offAll(() =>  HomeScreen());
     }
   }
 

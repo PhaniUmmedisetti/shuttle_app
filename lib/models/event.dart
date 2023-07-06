@@ -1,12 +1,12 @@
 class EventModel {
-   String name;
-   String sport;
+  String name;
+  DateTime createdAt;
   int? totalAmount;
   int? participantCount;
 
   EventModel({
     required this.name,
-    required this.sport,
+    required this.createdAt,
     this.totalAmount,
     this.participantCount,
   });

@@ -8,7 +8,8 @@ class EventItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return 
+    ListTile(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,7 +22,7 @@ class EventItemWidget extends StatelessWidget {
           TextField(
             decoration: const InputDecoration(labelText: 'Text field 2'),
             onChanged: (value) {
-              eventItem!.sport = value;
+              // eventItem!.sport = value;
             },
           ),
           TextField(
