@@ -6,6 +6,8 @@ class HomeController extends GetxController {
   Rx<List<EventModel>> events = Rx<List<EventModel>>([]);
   TextEditingController nameTextEditingController = TextEditingController();
   TextEditingController eventTextEditingController = TextEditingController();
+  TextEditingController countTextEditingController = TextEditingController();
+  TextEditingController dateTextEditingController = TextEditingController();
   late EventModel eventsModel;
   var itemCount = 0.obs;
 
@@ -40,10 +42,12 @@ class HomeController extends GetxController {
     super.onClose();
     nameTextEditingController.dispose();
     eventTextEditingController.dispose();
+    countTextEditingController.dispose();
+    dateTextEditingController.dispose();
   }
 
-  addEvent(String name, int totalAmount, int participantCount,
-      DateTime? createdAt) {
+  addEvent(
+      String name, int totalAmount, int participantCount, DateTime? createdAt) {
     eventsModel = EventModel(
       name: name,
       totalAmount: totalAmount,
@@ -54,10 +58,20 @@ class HomeController extends GetxController {
     itemCount.value = events.value.length;
     nameTextEditingController.clear();
     eventTextEditingController.clear();
+    countTextEditingController.clear();
+    dateTextEditingController.clear();
   }
 
   removeEvent(int index) {
     events.value.removeAt(index);
     itemCount.value = events.value.length;
+  }
+
+  void datePicker(context) {
+    showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2021));
   }
 }

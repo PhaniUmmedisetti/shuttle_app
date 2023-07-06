@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../controllers/home_controller.dart';
@@ -20,55 +21,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Display the dialog box when FAB is pressed
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Create event'),
-                // content: Text('This is a dialog box.'),
-                actions: <Widget>[
-                  TextField(
-                    controller: controller.nameTextEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "Name",
-                      labelText: "Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8),
-                        ),
-                      ),
-                      isDense: true,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextField(
-                    controller: controller.eventTextEditingController,
-                    decoration: const InputDecoration(
-                      hintText: "Address",
-                      labelText: "Address",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8),
-                        ),
-                      ),
-                      isDense: true,
-                    ),
-                  ),
-                  TextButton(
-                    child: const Text('Close'),
-                    onPressed: () {
-                      // controller.addEvent(
-                      //   controller.nameTextEditingController.text,
-                      //   controller.eventTextEditingController.text,
-                      // );
-                    },
-                  ),
-                ],
-              );
-            },
-          );
+          createEvent(context);
         },
         child: const Icon(Icons.add),
       ),
@@ -97,6 +50,107 @@ class HomeScreen extends StatelessWidget {
           );
         }),
       ),
+    );
+  }
+
+  Future<dynamic> createEvent(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+          title: const Text('Create event'),
+          // content: Text('This is a dialog box.'),
+          actions: <Widget>[
+            TextField(
+              controller: controller.nameTextEditingController,
+              decoration: const InputDecoration(
+                hintText: "Name",
+                labelText: "Name",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                isDense: true,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: controller.eventTextEditingController,
+              decoration: const InputDecoration(
+                hintText: "Address",
+                labelText: "Address",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                isDense: true,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: controller.eventTextEditingController,
+              decoration: const InputDecoration(
+                hintText: "Total count",
+                labelText: "Total count",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                isDense: true,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: controller.dateTextEditingController,
+              decoration: const InputDecoration(
+                hintText: "Total count",
+                labelText: "Total count",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                isDense: true,
+              ),
+            ),
+            const SizedBox(height: 8),
+            // TextField(
+            //   controller: controller.eventTextEditingController,
+            //   decoration: const InputDecoration(
+            //     hintText: "Date",
+            //     labelText: "Pick a date",
+            //     border: OutlineInputBorder(
+            //       borderRadius: BorderRadius.all(
+            //         Radius.circular(8),
+            //       ),
+            //     ),
+            //     isDense: true,
+            //   ),
+            // ),
+            // const SizedBox(height: 8),
+            Center(
+              child: ElevatedButton(
+                child: const Text('Create'),
+                onPressed: () {
+                  Get.back();
+                  // controller.addEvent(
+                  //   controller.nameTextEditingController.text,
+                  //   controller.eventTextEditingController.text,
+                  // );
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
